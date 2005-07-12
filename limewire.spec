@@ -4,11 +4,13 @@ Name:		limewire
 Version:	4.8.1
 Release:	0.2
 Epoch:		0
+# ??? GPL v2 with missing sources = non-distributable
 License:	GPL v2
 Group:		Applications/Networking
 # Source0Download: http://www.limewire.com/LimeWireSoftLinux
 Source0:	LimeWireLinux.rpm
-# Source0-md5:	49726ec8dd3744977ed68477332f765d
+# NoSource0-md5: 49726ec8dd3744977ed68477332f765d
+NoSource:	0
 URL:		http://www.limewire.com/
 Requires:	bash
 Requires:	jre
