@@ -1,4 +1,5 @@
 Summary:	The Fastest P2P File Sharing Program on the Planet
+Summary(pl):	Program do wspó³dzielenia plików metod± P2P
 Name:		limewire
 Version:	4.8.1
 Release:	0.2
@@ -24,6 +25,13 @@ LimeWire is faster than Ever
 - Firewall-to-firewall transfers
 - Cleaner, updated interface with new icons
 - Proxy support
+
+%description -l pl
+LimeWire jest szybszy ni¿ kiedykolwiek
+- gwarantowana czysta instalacja bez do³±czonego oprogramowania
+- przesy³anie danych od firewalla do firewalla
+- czysty, uaktualniony interfejs z nowymi ikonami
+- obs³uga proxy
 
 %prep
 %setup -q -c -T
@@ -56,7 +64,7 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_libdir}
 %attr(755,root,root) %{_libdir}/libIdleTime.so
 %attr(755,root,root) %{_libdir}/libtray.so
-%{_libdir}/root/
+%{_libdir}/root
 %{_libdir}/*.jar
 %{_libdir}/*.png
 %{_libdir}/*.gif
@@ -66,7 +74,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/hashes
 %{_libdir}/runLime.sh
 %{_libdir}/xml.war
-
-%{_datadir}/applications/LimeWire.desktop
-%{_datadir}/icons/hicolor/*/apps/limewire.png
-%{_datadir}/pixmaps/limewire.png
+%{_desktopdir}/LimeWire.desktop
+%{_iconsdir}/hicolor/*/apps/limewire.png
+%{_pixmapsdir}/limewire.png
