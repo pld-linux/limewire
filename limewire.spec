@@ -2,7 +2,7 @@ Summary:	The Fastest P2P File Sharing Program on the Planet
 Summary(pl):	Program do wspó³dzielenia plików metod± P2P
 Name:		limewire
 Version:	4.8.1
-Release:	0.2
+Release:	0.5
 Epoch:		0
 # ??? GPL v2 with missing sources = non-distributable
 License:	GPL v2
@@ -13,9 +13,15 @@ Source0:	LimeWireLinux.rpm
 NoSource:	0
 URL:		http://www.limewire.com/
 Requires:	bash
-Requires:	jre
+Requires:	jre > 1.4.0
+# somehow to notify we need java-sun-jre-X11 or equivalent
+%ifarch %{x8664}
+Requires:	libmawt.so()(64bit)
+%else
+Requires:	libmawt.so
+%endif
 #BuildArch:	noarch
-# Two .so files in package
+# Two .so files in package. subpackage?
 ExclusiveArch:	%{ix86}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
