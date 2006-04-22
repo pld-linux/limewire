@@ -1,15 +1,15 @@
 Summary:	The Fastest P2P File Sharing Program on the Planet
 Summary(pl):	Program do wspó³dzielenia plików metod± P2P
 Name:		limewire
-Version:	4.8.1
-Release:	0.5
+Version:	4.10.9
+Release:	0.1
 Epoch:		0
 # ??? GPL v2 with missing sources = non-distributable
 License:	GPL v2
 Group:		Applications/Networking
 # Source0Download: http://www.limewire.com/LimeWireSoftLinux
-Source0:	LimeWireLinux.rpm
-# NoSource0-md5: 49726ec8dd3744977ed68477332f765d
+Source0:	LimeWire-free-%{version}-0.rpm
+# NoSource0-md5: d19a4f12560a6621268c70a3fcc8a86c
 NoSource:	0
 URL:		http://www.limewire.com/
 Requires:	bash
@@ -45,9 +45,9 @@ LimeWire jest szybszy ni¿ kiedykolwiek
 %setup -q -c -T
 rpm2cpio %{SOURCE0} | cpio -id
 
-rm -f usr/lib/LimeWire/COPYING # GPL v2
-rm -f usr/lib/LimeWire/Limewire.{mandrake,desktop}
-rm -f usr/lib/menu/LimeWire
+rm usr/lib/LimeWire/COPYING # GPL v2
+rm usr/lib/LimeWire/Limewire.{mandrake,desktop}
+rm usr/lib/menu/LimeWire-free
 mv usr/lib/LimeWire/{SOURCE,README.txt} .
 
 %install
@@ -70,7 +70,6 @@ rm -rf $RPM_BUILD_ROOT
 %doc SOURCE README.txt
 %attr(755,root,root) %{_bindir}/limewire
 %dir %{_libdir}
-%attr(755,root,root) %{_libdir}/libIdleTime.so
 %attr(755,root,root) %{_libdir}/libtray.so
 %{_libdir}/root
 %{_libdir}/*.jar
@@ -79,6 +78,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/data.ser
 %{_libdir}/update.ver
 %{_libdir}/MessagesBundle.properties
+%{_libdir}/log4j.properties
 %{_libdir}/hashes
 %{_libdir}/runLime.sh
 %{_libdir}/xml.war
