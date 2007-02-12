@@ -1,5 +1,5 @@
 Summary:	The Fastest P2P File Sharing Program on the Planet
-Summary(pl):	Program do wspÛ≥dzielenia plikÛw metod± P2P
+Summary(pl.UTF-8):   Program do wsp√≥≈Çdzielenia plik√≥w metodƒÖ P2P
 Name:		limewire
 Version:	4.10.9
 Release:	0.1
@@ -34,12 +34,12 @@ LimeWire is faster than Ever
 - Cleaner, updated interface with new icons
 - Proxy support
 
-%description -l pl
-LimeWire jest szybszy niø kiedykolwiek
-- gwarantowana czysta instalacja bez do≥±czonego oprogramowania
-- przesy≥anie danych od firewalla do firewalla
+%description -l pl.UTF-8
+LimeWire jest szybszy ni≈º kiedykolwiek
+- gwarantowana czysta instalacja bez do≈ÇƒÖczonego oprogramowania
+- przesy≈Çanie danych od firewalla do firewalla
 - czysty, uaktualniony interfejs z nowymi ikonami
-- obs≥uga proxy
+- obs≈Çuga proxy
 
 %prep
 %setup -q -c -T
