@@ -1,5 +1,5 @@
 Summary:	The Fastest P2P File Sharing Program on the Planet
-Summary(pl.UTF-8):   Program do współdzielenia plików metodą P2P
+Summary(pl.UTF-8):	Program do współdzielenia plików metodą P2P
 Name:		limewire
 Version:	4.10.9
 Release:	0.1
