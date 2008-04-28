@@ -1,15 +1,14 @@
 Summary:	The Fastest P2P File Sharing Program on the Planet
 Summary(pl.UTF-8):	Program do współdzielenia plików metodą P2P
 Name:		limewire
-Version:	4.10.9
+Version:	4.16.7
 Release:	0.1
 Epoch:		0
 # ??? GPL v2 with missing sources = non-distributable
 License:	GPL v2
 Group:		Applications/Networking
-# Source0Download: http://www.limewire.com/LimeWireSoftLinux
-Source0:	LimeWire-free-%{version}-0.rpm
-# NoSource0-md5: d19a4f12560a6621268c70a3fcc8a86c
+Source0:	http://www10.limewire.com/download/LimeWireOther.zip
+# NoSource0-md5:	435f292e2da91236a54ec999b1941a21
 NoSource:	0
 URL:		http://www.limewire.com/
 Requires:	bash
@@ -25,7 +24,7 @@ Requires:	libmawt.so
 ExclusiveArch:	%{ix86}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_libdir %{_prefix}/lib/LimeWire
+%define		_appdir	%{_datadir}/LimeWire
 
 %description
 LimeWire is faster than Ever
@@ -42,18 +41,17 @@ LimeWire jest szybszy niż kiedykolwiek
 - obsługa proxy
 
 %prep
-%setup -q -c -T
-rpm2cpio %{SOURCE0} | cpio -id
-
-rm usr/lib/LimeWire/COPYING # GPL v2
-rm usr/lib/LimeWire/Limewire.{mandrake,desktop}
-rm usr/lib/menu/LimeWire-free
-mv usr/lib/LimeWire/{SOURCE,README.txt} .
+%setup -q -n LimeWire
+%{__sed} -i -e 's,\r$,,' SOURCE README.txt *.js hashes log4j.properties magnet.protocol
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_prefix}
-cp -a usr/* $RPM_BUILD_ROOT%{_prefix}
+install -d $RPM_BUILD_ROOT{%{_appdir},%{_libdir},%{_bindir}}
+cp -a *.jar *.js $RPM_BUILD_ROOT%{_appdir}
+cp -a root $RPM_BUILD_ROOT%{_appdir}
+cp -a data.ser hashes log4j.properties magnet.protocol $RPM_BUILD_ROOT%{_appdir}
+install libjdic.so libtray.so $RPM_BUILD_ROOT%{_libdir}
+install runLime.sh $RPM_BUILD_ROOT%{_appdir}
 
 # our improved script
 cat <<EOF > $RPM_BUILD_ROOT%{_bindir}/limewire
@@ -71,17 +69,15 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/limewire
 %dir %{_libdir}
 %attr(755,root,root) %{_libdir}/libtray.so
-%{_libdir}/root
-%{_libdir}/*.jar
-%{_libdir}/*.png
-%{_libdir}/*.gif
-%{_libdir}/data.ser
-%{_libdir}/update.ver
-%{_libdir}/MessagesBundle.properties
-%{_libdir}/log4j.properties
-%{_libdir}/hashes
-%{_libdir}/runLime.sh
-%{_libdir}/xml.war
-%{_desktopdir}/LimeWire.desktop
-%{_iconsdir}/hicolor/*/apps/limewire.png
-%{_pixmapsdir}/limewire.png
+%attr(755,root,root) %{_libdir}/libjdic.so
+%{_appdir}/root
+%{_appdir}/*.jar
+%{_appdir}/*.js
+%{_appdir}/*.protocol
+%{_appdir}/data.ser
+%{_appdir}/log4j.properties
+%{_appdir}/hashes
+%{_appdir}/runLime.sh
+#%{_desktopdir}/LimeWire.desktop
+#%{_iconsdir}/hicolor/*/apps/limewire.png
+#%{_pixmapsdir}/limewire.png
