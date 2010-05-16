@@ -11,6 +11,7 @@ Source0:	http://www10.limewire.com/download/LimeWireOther.zip
 # NoSource0-md5:	435f292e2da91236a54ec999b1941a21
 NoSource:	0
 URL:		http://www.limewire.com/
+BuildRequires:	unzip
 Requires:	bash
 Requires:	jre > 1.4.0
 # somehow to notify we need java-sun-jre-X11 or equivalent
